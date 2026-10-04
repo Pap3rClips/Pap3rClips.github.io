@@ -1,49 +1,365 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prénom Nom — Portfolio</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.5; color: #111; }
-    h1 { margin-bottom: 0; }
-    .muted { color: #555; }
-    a { color: #0b57d0; }
-    article { border-top: 1px solid #ddd; padding: 16px 0; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hadrien Costa-Robert — cybersécurité & infrastructure</title>
+<meta name="description" content="Hadrien Costa-Robert, étudiant en cybersécurité : infrastructure, réseau, DevSecOps et sécurité des systèmes d'IA. Travaux et parcours.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23243E8F'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%23E7E7E1' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E7E7E1; --panel:#F1F1EC; --ink:#1A1B18; --soft:#4C4E46;
+    --faint:#6E7066; --rule:#CDCDC4; --rule-soft:#DBDBD3;
+    --accent:#243E8F; --accent-tint:#DEE2EF; --flag:#A3382B;
+    --display:'Archivo',system-ui,sans-serif;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --maxw:960px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:72px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:17.5px; line-height:1.62;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+  ::selection{background:var(--accent-tint)}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  h1,h2,h3{font-family:var(--display); font-weight:700; letter-spacing:-.01em}
+
+  .top{position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--rule)}
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; height:58px}
+  .top .name{font-family:var(--display); font-weight:600; font-size:15.5px}
+  .top nav{display:flex; gap:28px}
+  .top nav a{font-family:var(--display); font-weight:500; font-size:14px; color:var(--soft); text-decoration:none; padding-bottom:2px; border-bottom:1.5px solid transparent}
+  .top nav a:hover{color:var(--ink); border-color:var(--ink)}
+  @media (max-width:620px){ .top nav{display:none} }
+
+  .intro{padding:76px 0 60px; border-bottom:1px solid var(--rule)}
+  .intro-grid{display:grid; grid-template-columns:1fr 272px; gap:52px; align-items:end}
+  @media (max-width:800px){ .intro-grid{grid-template-columns:1fr; gap:40px; align-items:start} }
+  .avail{font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--accent); margin:0 0 20px}
+  h1.lede{font-size:clamp(33px,5.4vw,52px); line-height:1.06; margin:0 0 24px; max-width:16ch}
+  .intro p.text{font-size:19px; color:var(--soft); margin:0 0 28px; max-width:56ch}
+  .intro p.text em{font-style:normal; color:var(--ink); box-shadow:inset 0 -.5em 0 var(--accent-tint)}
+  .cta-row{display:flex; flex-wrap:wrap; gap:22px; align-items:center}
+  .cta{font-family:var(--display); font-weight:600; font-size:15px; text-decoration:none}
+  .cta.solid{background:var(--ink); color:var(--paper); padding:12px 20px; transition:background .15s}
+  .cta.solid:hover{background:var(--accent)}
+  .cta.plain{color:var(--ink); border-bottom:2px solid var(--accent); padding-bottom:3px}
+  .cta.plain:hover{color:var(--accent)}
+
+  .dossier{border:1px solid var(--rule); background:var(--panel)}
+  .dossier h2{font-size:12.5px; font-weight:600; letter-spacing:.06em; color:var(--faint); margin:0; padding:13px 18px; border-bottom:1px solid var(--rule); text-transform:uppercase}
+  .dossier dl{margin:0; padding:6px 18px 14px}
+  .dossier .row{padding:11px 0; border-bottom:1px solid var(--rule-soft)}
+  .dossier .row:last-child{border-bottom:0}
+  .dossier dt{font-family:var(--display); font-weight:600; font-size:14.5px; color:var(--ink)}
+  .dossier dd{margin:3px 0 0; font-size:14.5px; color:var(--soft); line-height:1.45}
+
+  section{padding:64px 0}
+  .shead{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
+  .shead h2{font-size:15px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); margin:0}
+  .shead .line{flex:1; height:1px; background:var(--rule)}
+  .shead .n{font-family:var(--display); font-size:14px; color:var(--faint)}
+
+  .filter-row{display:flex; flex-wrap:wrap; gap:4px 22px; margin:22px 0 4px}
+  .filter{font-family:var(--display); font-weight:500; font-size:14.5px; color:var(--faint); background:none; border:0; padding:4px 0 6px; cursor:pointer; border-bottom:2px solid transparent}
+  .filter:hover{color:var(--ink)}
+  .filter[aria-pressed="true"]{color:var(--ink); border-color:var(--accent)}
+
+  .work{margin-top:12px}
+  .entry{display:grid; grid-template-columns:1fr auto; gap:6px 24px; padding:30px 0; border-top:1px solid var(--rule)}
+  .entry.hide{display:none}
+  .entry h3{font-size:23px; font-weight:600; margin:0; letter-spacing:-.015em}
+  .entry .doms{font-family:var(--display); font-weight:500; font-size:13px; color:var(--accent); text-align:right; padding-top:7px; white-space:nowrap}
+  .entry .body{grid-column:1 / -1; max-width:68ch}
+  .entry p{margin:12px 0 0; color:var(--soft)}
+  .entry .figure{margin:14px 0 0; font-family:var(--display); font-size:14.5px; color:var(--ink)}
+  .entry .figure .was{color:var(--flag); font-weight:700}
+  .entry .figure .became{color:var(--accent); font-weight:700}
+  .entry .stack{margin:14px 0 0; font-size:15px; color:var(--faint); font-style:italic}
+  .entry .go{display:inline-block; margin-top:16px; font-family:var(--display); font-weight:600; font-size:14.5px; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:2px}
+  .entry .go:hover{color:var(--accent)}
+  @media (max-width:620px){
+    .entry{grid-template-columns:1fr}
+    .entry .doms{text-align:left; padding-top:4px; white-space:normal}
+  }
+  #empty{display:none; color:var(--faint); font-style:italic; padding:26px 0; border-top:1px solid var(--rule)}
+
+  #parcours .cols{display:grid; grid-template-columns:1fr 300px; gap:48px; margin-top:26px}
+  @media (max-width:800px){ #parcours .cols{grid-template-columns:1fr; gap:32px} }
+  #parcours p{margin:0 0 18px; color:var(--soft); max-width:60ch}
+  #parcours p em{font-style:normal; color:var(--ink); font-weight:500}
+  .timeline .t{padding:16px 0; border-top:1px solid var(--rule-soft)}
+  .timeline .t:first-child{border-top:0}
+  .timeline .yr{font-family:var(--display); font-weight:600; font-size:13px; color:var(--accent)}
+  .timeline .ti{font-family:var(--display); font-weight:600; font-size:15px; margin:3px 0 2px}
+  .timeline .de{font-size:14.5px; color:var(--soft); line-height:1.45}
+
+  #contact{border-top:1px solid var(--rule); padding:66px 0 60px}
+  #contact h2.big{font-size:clamp(26px,4.4vw,40px); font-weight:700; margin:0 0 16px; letter-spacing:-.02em}
+  #contact p{color:var(--soft); max-width:50ch; margin:0 0 26px; font-size:18px}
+  #contact .lines a{display:inline-block; margin-right:26px; font-family:var(--display); font-weight:600; font-size:15.5px; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:2px}
+  #contact .lines a:hover{color:var(--accent)}
+  footer{border-top:1px solid var(--rule); padding:22px 0}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:13.5px; color:var(--faint); font-family:var(--display)}
+  .site-intro{color:var(--soft); max-width:62ch; margin:18px 0 0; font-size:17px}
+  .feat{border-top:1px solid var(--rule); margin-top:22px}
+  .sublabel{font-family:var(--display); font-weight:600; font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:var(--faint); margin:30px 0 0}
+  .sitelist{display:grid; grid-template-columns:1fr 1fr; gap:0 44px; margin-top:4px; border-top:1px solid var(--rule)}
+  @media (max-width:620px){ .sitelist{grid-template-columns:1fr} }
+  .site{padding:19px 0; border-bottom:1px solid var(--rule-soft)}
+  .site a.nm{font-family:var(--display); font-weight:600; font-size:16px; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:1px}
+  .site a.nm:hover{color:var(--accent)}
+  .site .ds{font-size:14.5px; color:var(--soft); margin-top:7px; line-height:1.45}
+  .site .host{font-family:var(--display); font-size:12.5px; color:var(--faint); margin-top:5px}
+</style>
 </head>
 <body>
-  <h1>Prénom Nom</h1>
-  <p class="muted">Junior systèmes, réseaux et cybersécurité — homelab &amp; support</p>
-  <p>
-    <a href="https://github.com/ton-pseudo">GitHub</a>
-    · prenom.nom@email.fr
-  </p>
 
-  <h2>Projets</h2>
+<header class="top">
+  <div class="wrap">
+    <a class="name" href="#top" style="text-decoration:none">Hadrien Costa-Robert</a>
+    <nav>
+      <a href="#travaux">Travaux</a>
+      <a href="#web">Web</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <article>
-    <h3>Homelab Active Directory</h3>
-    <p>DC Windows Server, 3 postes domaine, GPO, DNS/DHCP. Virtualisé sous Proxmox.</p>
-    <p><a href="https://github.com/ton-pseudo/homelab-ad">Voir le repo</a></p>
-  </article>
+<main id="top">
 
-  <article>
-    <h3>GLPI + parc</h3>
-    <p>Ticketing, inventaire agent, base de connaissances sur instance Docker.</p>
-    <p><a href="https://github.com/ton-pseudo/glpi-lab">Voir le repo</a></p>
-  </article>
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div>
+        <p class="avail">En recherche d'alternance pour la rentrée 2027</p>
+        <h1 class="lede">Je construis des infrastructures, puis je cherche à les casser.</h1>
+        <p class="text">Étudiant en troisième année de cybersécurité à Guardia, spécialisé <em>réseau et sécurité offensive</em>, et auto-entrepreneur en informatique depuis 2023. J'administre des environnements complets et je les aborde du côté de l'attaque comme de la défense.</p>
+        <div class="cta-row">
+          <a class="cta solid" href="#travaux">Parcourir mes travaux</a>
+          <a class="cta plain" href="mailto:hadrienlearn@protonmail.com">Me contacter</a>
+        </div>
+      </div>
+      <aside class="dossier">
+        <h2>En bref</h2>
+        <dl>
+          <div class="row"><dt>Recherche</dt><dd>Stagiaire au CRGN, cryptographie post-quantique — article de recherche en cours de finalisation</dd></div>
+          <div class="row"><dt>Compétition</dt><dd>Passionné de CTF, participant presque tous les mois ; top 1 % sur TryHackMe</dd></div>
+          <div class="row"><dt>Certifications</dt><dd>Stormshield CSNA, CCNA en préparation</dd></div>
+          <div class="row"><dt>Localisation</dt><dd>Région parisienne, mobile</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
 
-  <article>
-    <h3>Mini-SOC Wazuh</h3>
-    <p>Agents Windows/Linux, Sysmon, détection brute-force, REX d’incident.</p>
-    <p><a href="https://github.com/ton-pseudo/wazuh-lab">Voir le repo</a></p>
-  </article>
+  <section id="travaux">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Travaux</h2>
+        <span class="line"></span>
+        <span class="n" id="count">cinq projets</span>
+      </div>
 
-  <article>
-    <h3>Azure + Terraform</h3>
-    <p>VNet, NSG, VM, Entra ID. Infra reproduisible avec Terraform.</p>
-    <p><a href="https://github.com/ton-pseudo/terraform-azure-lab">Voir le repo</a></p>
-  </article>
+      <div class="filter-row" role="group" aria-label="Filtrer par domaine">
+        <button class="filter" data-filter="all" aria-pressed="true">Tout</button>
+        <button class="filter" data-filter="cyber" aria-pressed="false">Cybersécurité</button>
+        <button class="filter" data-filter="reseau" aria-pressed="false">Réseau &amp; systèmes</button>
+        <button class="filter" data-filter="devops" aria-pressed="false">DevOps &amp; cloud</button>
+        <button class="filter" data-filter="ia" aria-pressed="false">Intelligence artificielle</button>
+      </div>
+
+      <div class="work" id="work">
+
+        <article class="entry" data-domains="reseau cyber">
+          <h3>Homelab d'infrastructure</h3>
+          <div class="doms">Réseau &amp; systèmes, Cybersécurité</div>
+          <div class="body">
+            <p>Un système d'information complet, monté et administré de bout en bout : Active Directory sous Windows Server, réseau segmenté en VLAN avec accès distant par VPN, supervision Zabbix, gestion des tickets sous GLPI et pilotage du parc via Microsoft 365 et Intune. L'ensemble est documenté et une partie de l'administration est scriptée en PowerShell.</p>
+            <p class="stack">Windows Server, Active Directory, Proxmox VE, VLAN, VPN, Zabbix, GLPI, Microsoft 365, PowerShell.</p>
+            <a class="go" href="https://github.com/Pap3rClips" target="_blank" rel="noopener">Documentation et code</a>
+          </div>
+        </article>
+
+        <article class="entry" data-domains="devops cyber">
+          <h3>Pipeline DevSecOps</h3>
+          <div class="doms">DevOps &amp; cloud, Cybersécurité</div>
+          <div class="body">
+            <p>Une chaîne de déploiement où la sécurité est un contrôle bloquant plutôt qu'une vérification de dernière minute. L'infrastructure est décrite en code, l'analyse de vulnérabilités s'exécute avant toute mise en production, et la supervision comme les sauvegardes sont testées automatiquement.</p>
+            <p class="stack">Ansible, Docker, CI/CD, Trivy, WPScan, Terraform, Azure.</p>
+            <a class="go" href="https://github.com/Pap3rClips" target="_blank" rel="noopener">Voir le dépôt</a>
+          </div>
+        </article>
+
+        <article class="entry" data-domains="ia cyber">
+          <h3>LLM Red Team Bench</h3>
+          <div class="doms">IA, Cybersécurité</div>
+          <div class="body">
+            <p>Un banc de tests offensifs aligné sur l'OWASP Top 10 for LLM Applications. Il rejoue un catalogue d'attaques contre une application d'IA et mesure leur réussite par des détecteurs déterministes, sans recourir à un modèle comme juge. La même application est évaluée en version vulnérable et en version durcie, pour isoler l'apport de chaque défense.</p>
+            <p class="figure">Taux de réussite des attaques : <span class="was">100 %</span> sur l'application vulnérable, <span class="became">0 %</span> après durcissement.</p>
+            <p class="stack">Python, OWASP LLM Top 10, injection de prompt, pytest, intégration continue.</p>
+            <a class="go" href="https://github.com/Pap3rClips/llm-redteam-bench" target="_blank" rel="noopener">Code source</a>
+          </div>
+        </article>
+
+        <article class="entry" data-domains="ia cyber reseau">
+          <h3>Wazuh LLM Triage</h3>
+          <div class="doms">IA, Cybersécurité, Réseau &amp; systèmes</div>
+          <div class="body">
+            <p>Un outil qui regroupe les alertes Wazuh en incidents, établit des faits fiables sans intelligence artificielle, puis demande à un modèle un résumé et des actions recommandées. Le modèle conseille mais ne décide jamais seul : des garde-fous l'empêchent de sous-estimer la gravité, et le système résiste aux instructions malveillantes cachées dans les alertes.</p>
+            <p class="figure">Soixante-dix alertes regroupées en <span class="became">huit incidents</span> priorisés.</p>
+            <p class="stack">Python, Wazuh, Sysmon, API Claude, recherche BM25, pytest, intégration continue.</p>
+            <a class="go" href="https://github.com/Pap3rClips/wazuh-llm-triage" target="_blank" rel="noopener">Code source</a>
+          </div>
+        </article>
+
+        <article class="entry" data-domains="ia cyber devops">
+          <h3>LLM Privacy Gateway</h3>
+          <div class="doms">IA, Cybersécurité, DevOps &amp; cloud</div>
+          <div class="body">
+            <p>Une passerelle qui remplace les données personnelles par des pseudonymes avant d'interroger une API de LLM, puis reconstitue la réponse. Le fournisseur du modèle ne voit jamais la donnée réelle, tandis que l'utilisateur reçoit une réponse complète. Les tables de correspondance sont chiffrées au repos en AES-256-GCM.</p>
+            <p class="stack">Python, FastAPI, AES-256-GCM, Docker, conformité RGPD.</p>
+            <a class="go" href="https://github.com/Pap3rClips/llm-privacy-gateway" target="_blank" rel="noopener">Code source</a>
+          </div>
+        </article>
+
+      </div>
+      <p id="empty">Aucun projet dans ce domaine pour l'instant.</p>
+    </div>
+  </section>
+
+  <section id="web" style="border-top:1px solid var(--rule)">
+    <div class="wrap">
+      <div class="shead"><h2>Réalisations web</h2><span class="line"></span><span class="n">auto-entreprise</span></div>
+      <p class="site-intro">Depuis 2023, je conçois, héberge et sécurise des sites pour des clients variés — recherche, entreprises, indépendants. Voici une sélection ; elle ne couvre qu'une partie des sites livrés.</p>
+
+      <article class="entry feat">
+        <h3>Paris Time Machine</h3>
+        <div class="doms">Site de recherche — Huma-Num (CNRS)</div>
+        <div class="body">
+          <p>Site du consortium de recherche en humanités numériques Paris Time Machine, hébergé par l'infrastructure Huma-Num. Il réunit historiens, archéologues et géographes autour des données géo-historiques de Paris : actualités du consortium, ressources documentaires et accès aux plateformes et projets scientifiques.</p>
+          <p class="stack">WordPress — intégration, mise en page et maintenance.</p>
+          <a class="go" href="https://ptm.huma-num.fr/" target="_blank" rel="noopener">Voir le site</a>
+        </div>
+      </article>
+
+      <p class="sublabel">Autres sites livrés</p>
+      <div class="sitelist">
+        <div class="site">
+          <a class="nm" href="https://archipelpiscines.fr/" target="_blank" rel="noopener">Archipel Piscines</a>
+          <div class="ds">Site vitrine d'un pisciniste : présentation des prestations et des réalisations.</div>
+          <div class="host">archipelpiscines.fr</div>
+        </div>
+        <div class="site">
+          <a class="nm" href="https://jrm-ingenierie.fr/" target="_blank" rel="noopener">JRM Ingénierie</a>
+          <div class="ds">Site professionnel d'un bureau d'études en ingénierie.</div>
+          <div class="host">jrm-ingenierie.fr</div>
+        </div>
+        <div class="site">
+          <a class="nm" href="https://soproad-diag.fr/" target="_blank" rel="noopener">Soproad Diag</a>
+          <div class="ds">Site d'une société de diagnostics.</div>
+          <div class="host">soproad-diag.fr</div>
+        </div>
+        <div class="site">
+          <a class="nm" href="https://www.camille-flandre.com/" target="_blank" rel="noopener">Camille Flandre</a>
+          <div class="ds">Site vitrine personnel.</div>
+          <div class="host">camille-flandre.com</div>
+        </div>
+        <div class="site">
+          <a class="nm" href="https://www.amyarnaud.fr/" target="_blank" rel="noopener">Amy Arnaud</a>
+          <div class="ds">Site vitrine personnel.</div>
+          <div class="host">amyarnaud.fr</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parcours" style="border-top:1px solid var(--rule)">
+    <div class="wrap">
+      <div class="shead"><h2>Parcours</h2><span class="line"></span></div>
+      <div class="cols">
+        <div>
+          <p>Je me suis spécialisé en réseaux et en sécurité offensive parce que les deux se répondent : on sécurise mieux une infrastructure qu'on sait attaquer. Ma mineure Red Team et les CTF, auxquels je participe presque tous les mois, entretiennent ce regard, pendant que mon homelab et mon auto-entreprise me gardent les mains dans l'administration réelle.</p>
+          <p>Depuis 2023, j'accompagne des particuliers et des TPE sur leur informatique : <em>support, hébergement web, sécurisation</em>. En parallèle, mon stage au Centre de Recherche de la Gendarmerie Nationale m'a plongé dans la cryptographie post-quantique, jusqu'à co-écrire un article de recherche que l'équipe finalise actuellement.</p>
+          <p>Je cherche aujourd'hui une alternance où je serai utile autant sur l'infrastructure et le support que sur la sécurité, et où j'apprendrai d'une équipe.</p>
+        </div>
+        <div class="timeline">
+          <div class="t"><div class="yr">2024 – 2027</div><div class="ti">Bachelor Cybersécurité</div><div class="de">Guardia CyberSecurity School, Paris. Spécialisation réseau, mineure Red Team.</div></div>
+          <div class="t"><div class="yr">2026</div><div class="ti">Stage de recherche, CRGN</div><div class="de">Cryptographie post-quantique, article de recherche en cours de finalisation.</div></div>
+          <div class="t"><div class="yr">depuis 2023</div><div class="ti">Auto-entrepreneur</div><div class="de">Support informatique, hébergement et sécurisation web.</div></div>
+          <div class="t"><div class="yr">2023</div><div class="ti">Baccalauréat général</div><div class="de">Spécialités mathématiques et NSI.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="big">Parlons de votre poste.</h2>
+      <p>Je réponds vite et je suis mobile en région parisienne. Le plus simple reste l'e-mail.</p>
+      <div class="lines">
+        <a href="mailto:hadrienlearn@protonmail.com">hadrienlearn@protonmail.com</a>
+        <a href="assets/CV_Hadrien_Costa-Robert.pdf" download>Télécharger mon CV</a>
+        <a href="https://github.com/Pap3rClips" target="_blank" rel="noopener">github.com/Pap3rClips</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Hadrien Costa-Robert</span>
+    <span>Région parisienne — disponible en alternance</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var count   = document.getElementById('count');
+  var empty   = document.getElementById('empty');
+  var words   = {0:'aucun projet',1:'un projet',2:'deux projets',3:'trois projets',4:'quatre projets',5:'cinq projets'};
+  var labels  = {all:'', cyber:'Cybersécurité', reseau:'Réseau & systèmes', devops:'DevOps & cloud', ia:'Intelligence artificielle'};
+
+  function apply(filter){
+    var shown = 0;
+    entries.forEach(function(e){
+      var ok = filter==='all' || e.getAttribute('data-domains').split(' ').indexOf(filter) !== -1;
+      e.classList.toggle('hide', !ok);
+      if(ok) shown++;
+    });
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-filter')===filter)); });
+    count.textContent = (words[shown]||shown+' projets') + (filter==='all' ? '' : ' — ' + labels[filter]);
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-filter');
+      apply(f);
+      try{
+        var url = f==='all' ? location.pathname : location.pathname + '?focus=' + f;
+        history.replaceState(null, '', url);
+      }catch(e){ /* contexte restreint : on ignore proprement */ }
+    });
+  });
+
+  var focus = null;
+  try{ focus = new URLSearchParams(location.search).get('focus'); }catch(e){ focus = null; }
+  var valid = buttons.some(function(b){ return b.getAttribute('data-filter')===focus; });
+  apply(valid ? focus : 'all');
+</script>
 </body>
 </html>
