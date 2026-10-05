@@ -122,6 +122,12 @@
   .site a.nm:hover{color:var(--accent)}
   .site .ds{font-size:14.5px; color:var(--soft); margin-top:7px; line-height:1.45}
   .site .host{font-family:var(--display); font-size:12.5px; color:var(--faint); margin-top:5px}
+  .altgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:0 44px; margin-top:12px; border-top:1px solid var(--rule)}
+  @media (max-width:620px){ .altgrid{grid-template-columns:1fr} }
+  .altgrid .a{padding:17px 0; border-bottom:1px solid var(--rule-soft)}
+  .altgrid .k{font-family:var(--display); font-weight:600; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--faint)}
+  .altgrid .v{font-size:16.5px; color:var(--ink); margin-top:6px; line-height:1.4}
+  .todo{color:var(--flag); font-style:italic; font-size:14.5px}
 </style>
 </head>
 <body>
@@ -133,6 +139,7 @@
       <a href="#travaux">Travaux</a>
       <a href="#web">Web</a>
       <a href="#parcours">Parcours</a>
+      <a href="#alternance">Alternance</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -143,8 +150,8 @@
   <section class="intro">
     <div class="wrap intro-grid">
       <div>
-        <p class="avail">En recherche d'alternance pour la rentrée 2027</p>
-        <h1 class="lede">Je construis des infrastructures, puis je cherche à les casser.</h1>
+        <p class="avail">En recherche d'alternance pour décembre 2026</p>
+        <h1 class="lede">Réseau, systèmes et sécurité, de l'administration à l'offensif</h1>
         <p class="text">Étudiant en troisième année de cybersécurité à Guardia, spécialisé <em>réseau et sécurité offensive</em>, et auto-entrepreneur en informatique depuis 2023. J'administre des environnements complets et je les aborde du côté de l'attaque comme de la défense.</p>
         <div class="cta-row">
           <a class="cta solid" href="#travaux">Parcourir mes travaux</a>
@@ -248,7 +255,6 @@
         <div class="doms">Site de recherche — Huma-Num (CNRS)</div>
         <div class="body">
           <p>Site du consortium de recherche en humanités numériques Paris Time Machine, hébergé par l'infrastructure Huma-Num. Il réunit historiens, archéologues et géographes autour des données géo-historiques de Paris : actualités du consortium, ressources documentaires et accès aux plateformes et projets scientifiques.</p>
-          <p class="stack">WordPress — intégration, mise en page et maintenance.</p>
           <a class="go" href="https://ptm.huma-num.fr/" target="_blank" rel="noopener">Voir le site</a>
         </div>
       </article>
@@ -264,11 +270,6 @@
           <a class="nm" href="https://jrm-ingenierie.fr/" target="_blank" rel="noopener">JRM Ingénierie</a>
           <div class="ds">Site professionnel d'un bureau d'études en ingénierie.</div>
           <div class="host">jrm-ingenierie.fr</div>
-        </div>
-        <div class="site">
-          <a class="nm" href="https://soproad-diag.fr/" target="_blank" rel="noopener">Soproad Diag</a>
-          <div class="ds">Site d'une société de diagnostics.</div>
-          <div class="host">soproad-diag.fr</div>
         </div>
         <div class="site">
           <a class="nm" href="https://www.camille-flandre.com/" target="_blank" rel="noopener">Camille Flandre</a>
@@ -303,13 +304,27 @@
     </div>
   </section>
 
+  <section id="alternance" style="border-top:1px solid var(--rule)">
+    <div class="wrap">
+      <div class="shead"><h2>Alternance</h2><span class="line"></span><span class="n">recherche en cours</span></div>
+      <p class="site-intro">Je recherche une alternance en cybersécurité, réseau et systèmes. Voici l'essentiel pour situer ma candidature ; pour le reste, écrivez-moi.</p>
+      <div class="altgrid">
+        <div class="a"><div class="k">Contrat</div><div class="v">Contrat d'apprentissage</div></div>
+        <div class="a"><div class="k">Début</div><div class="v">Décembre 2026 (idéalement)</div></div>
+        <div class="a"><div class="k">Rythme</div><div class="v">2 semaines entreprise / 1 semaine en cours</div></div>
+        <div class="a"><div class="k">Durée</div><div class="v">1 an, avec possibilité de prolongation</div></div>
+        <div class="a"><div class="k">Formation</div><div class="v">Guardia CyberSecurity School, Paris</div></div>
+        <div class="a"><div class="k">Localisation</div><div class="v">Région parisienne, mobile</div></div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="wrap">
       <h2 class="big">Parlons de votre poste.</h2>
       <p>Je réponds vite et je suis mobile en région parisienne. Le plus simple reste l'e-mail.</p>
       <div class="lines">
         <a href="mailto:hadrienlearn@protonmail.com">hadrienlearn@protonmail.com</a>
-        <a href="assets/CV_Hadrien_Costa-Robert.pdf" download>Télécharger mon CV</a>
         <a href="https://github.com/Pap3rClips" target="_blank" rel="noopener">github.com/Pap3rClips</a>
       </div>
     </div>
